@@ -1,0 +1,26 @@
+
+% все пакеты
+\input{configs/includes.tex}
+
+% Настройки шрифтов, фича xelatex
+\usepackage{fontspec} % пакет для выбора шрифта
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  %% свойства шрифтов по умолчанию
+\setmainfont[Ligatures={TeX,Historic}]{Times New Roman} %% задаёт основной шрифт документа
+\setsansfont{Montserrat}                    %% задаёт шрифт без засечек
+
+\setmonofont{Fira Code} % очень много итальянской магии от итальянских волшебников
+
+
+% Отсутпы по краям
+\usepackage[left=3cm,right=1cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+% адреса для поиска картинок
+\graphicspath{ {../img/}{./img/}{./tex/img/} }
+
+
+
+\setlength{\parindent}{1.25cm} % абзац
+
+
+
+

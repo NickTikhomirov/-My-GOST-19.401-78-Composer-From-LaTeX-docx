@@ -1,0 +1,218 @@
+% !TEX program = xelatex
+
+\documentclass[12pt,a4paper]{article}
+
+\input{./configs/_configs_main.tex}
+
+\usepackage{needspace}
+\usepackage{lscape}
+\usepackage{verbatimbox}
+\usepackage{indentfirst}
+\usepackage{titletoc}
+\usepackage[center]{titlesec}
+\usepackage{xpatch,letltxmacro}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{bold-extra}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[C]{\thepage \\ МГТУ.111111.001-01 12 01}
+\fancyfoot{}
+\renewcommand{\footrulewidth}{0 mm}
+\renewcommand{\headrulewidth}{0 mm}
+
+% Размер заголовка с одной циферкой
+\newcommand{\sectionsize}{\fontsize{14pt}{14pt}}
+
+
+\makeatletter
+\renewcommand\tableofcontents{%
+    \centerline{\textbf{СОДЕРЖАНИЕ}}\vspace{-1cm}
+
+    \null\hfill\textbf{\sectionsize}\hfill\null\par
+    \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+    \@starttoc{toc}%
+}
+\makeatother
+
+\dottedcontents{section}[1.6em]{}{0.8cm}{.3pc}
+\dottedcontents{subsection}[3.1em]{}{0.8cm}{.3pc}
+
+
+\titleformat{\section}
+{\centering\bfseries\MakeUppercase}
+{\sectionsize\selectfont\thesection{}. }
+{0cm}
+{\sectionsize\selectfont}
+
+
+
+
+\lstset{language=[Sharp]C,
+  showspaces=true,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  %breakatwhitespace=true,
+  escapeinside={(*@}{@*)},
+  basicstyle=\ttfamily,
+  columns=fullflexible
+}
+
+
+
+\newcommand{\getcode}[1]{
+
+\newpage
+
+\section{Текст файла #1.}\stepcounter{section}
+
+
+\begingroup
+\itshape
+
+\lstinputlisting{../cs/#1}
+
+\endgroup
+
+}
+
+
+
+
+
+\begin{document}
+
+
+\includepdf
+[
+    pages={1}, 
+    %pagecommand={
+    %    \section*{Приложение 1: Ход решения метода неопределённых коэффициентов}
+    %    Выделим оранжевым исходы $f(\dots) = 0$, вычеркнем жёлтым те коэффициенты, которые встречаются в оранжевых строках, остальные выделим фиолетовым.
+    %}
+]{../docx/title.pdf}
+
+
+\section*{Аннотация}
+
+В данном документе излагается программный код программного обеспечения для эмуляции процессора «CEMUS» (эмулятора). 
+
+Эмулятор представляет собой программу с графическим интерфейсом, разработанную на высокоуровневом условно интерпретируемом универсальном языке программирования со статической типизацией C\# (версия языка на момент разработки: 7.0) с использованием описанных далее сторонних библиотек.
+
+Эмулятор позволяет продемонстрировать работу микропрограммного уровня процессора «CEMUS», настройку при помощи дешифратора, а также программного уровня процессора «CEMUS». Также при разработке в эмулятор закладывался функционал по набору программных текстов для процессора «CEMUS» - пригодных для загрузки в долговременную энергонезависимую память процессора. 
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\getcode{App.xaml}
+\getcode{App.xaml.cs}
+\getcode{AssemblyInfo.cs}
+\getcode{Cemus.cs}
+\getcode{CemusCore.cs}
+\getcode{CollectionUtils.cs}
+\getcode{CommandConvertHelper.cs}
+\getcode{CommandState.cs}
+\getcode{CommandWrap.cs}
+\getcode{CommentaryOpenCloser.cs}
+\getcode{Configurations.cs}
+\getcode{ContextDrawers.cs}
+\getcode{Decoder.cs}
+\getcode{DecoderHelper.cs}
+\getcode{DecoderProcessors.cs}
+\getcode{DecoderSingleMapping.cs}
+\getcode{DialogHelper.cs}
+\getcode{EmulationMode.cs}
+\getcode{Emulator.cs}
+\getcode{EmulatorEvents.cs}
+\getcode{EventUtils.cs}
+\getcode{ExecutionStyle.cs}
+\getcode{FileSearchHelper.cs}
+\getcode{FlagDrawHelper.cs}
+\getcode{FlagNames.cs}
+\getcode{FlowResolver.cs}
+\getcode{FullProjectHelper.cs}
+\getcode{GeneratedJsonSchema.cs}
+\getcode{GlobalConfig.cs}
+\getcode{IColorful.cs}
+\getcode{ICommand.cs}
+\getcode{INamedSaveOpener.cs}
+\getcode{IResetable.cs}
+\getcode{InterruptManager.cs}
+\getcode{InterruptSources.cs}
+\getcode{JsonedCfgOpener.cs}
+\getcode{JsonedConfigs.cs}
+\getcode{ListRowFabric.cs}
+\getcode{MMURequest.cs}
+\getcode{MacroCommand.cs}
+\getcode{MacroContext.cs}
+\getcode{MacroOpenCloser.cs}
+\getcode{MacroTextBoxes.cs}
+\getcode{MainWindow.xaml}
+\getcode{MainWindow.xaml.cs}
+\getcode{MemoryProvider.cs}
+\getcode{MicroByteStack.cs}
+\getcode{MicroCommand.cs}
+\getcode{MicroCommandGetters.cs}
+\getcode{MicroCommandsFields.cs}
+\getcode{MicroContext.cs}
+\getcode{MicroCore.cs}
+\getcode{MicroEmulatorProgramTweakers.cs}
+\getcode{MicroOpenCloser.cs}
+\getcode{MicroStepResult.cs}
+\getcode{ModelValue.cs}
+\getcode{NumberUtils.cs}
+\getcode{PageSwitchers.cs}
+\getcode{PiplineStates.cs}
+\getcode{PostScript.cs}
+\getcode{ProgramList.cs}
+\getcode{ProjectEncoder.cs}
+\getcode{ProjectOpenerJSON.cs}
+\getcode{QuickDecypher.cs}
+\getcode{QuickDecypherExplanationBuilder.cs}
+\getcode{RegWrapperAsFlags.cs}
+\getcode{RegisterFile.cs}
+\getcode{RegisterHelpDrawer.cs}
+\getcode{RequestDialog.cs}
+\getcode{Resources.Designer.cs}
+\getcode{SaveAndOpen.cs}
+\getcode{Settings.Designer.cs}
+\getcode{ShiftUtils.cs}
+\getcode{SimulationKeys.cs}
+\getcode{SingleUseAlu.cs}
+\getcode{StackHelper.cs}
+\getcode{StateShepherd.cs}
+\getcode{Terminal.cs}
+\getcode{TextEditor.cs}
+\getcode{TextHelps.cs}
+\getcode{Trivia.cs}
+\getcode{VisibilityState.cs}
+\getcode{WindowListViews.cs}
+\getcode{YamlParse.cs}
+\getcode{createJsonSchema.cs}
+\getcode{uCommandValidator.cs}
+\getcode{uSimBackConverter.cs}
+
+
+
+
+\newpage
+
+\includepdf
+[
+pages={2}, 
+    pagecommand={
+    %    \section*{Приложение 1: Ход решения метода неопределённых коэффициентов}
+    %    Выделим оранжевым исходы $f(\dots) = 0$, вычеркнем жёлтым те коэффициенты, которые встречаются в оранжевых строках, остальные выделим фиолетовым.
+    }
+]{../docx/title.pdf}
+
+\end{document}
